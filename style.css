@@ -15,8 +15,34 @@ body {
     font-weight: 700;
 }
 
+.typing p {
+    margin: 0;
+    line-height: 150%;
+    text-shadow: 0 0 2px greenyellow;
+}
+
+.typing p::before {
+    content: "> ";
+}
+
+.typing p:nth-last-of-type(1)::after {
+    content: "_";
+    animation: cursor 0.3s infinite alternate;
+}
+
 .robot {
     box-sizing: border-box;
     width: 30%;
     padding: 3%;
+}
+
+@keyframes cursor {
+    0%,
+    30% {
+        opacity: 0;
+    }
+    70%,
+    100% {
+        opacity: 1;
+    }
 }
