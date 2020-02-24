@@ -33,11 +33,25 @@ const blink = () => {
     return tl_blink;
 };
 
-const move = () => {
+const move = legs => {
+    // console.log(elements);
     const tl_move = new TimelineMax();
+    tl_move.staggerTo(
+        legs,
+        0.5,
+        {
+            y: -60,
+            repeat: -1,
+            yoyo: true,
+            ease: Power0.easeNone
+        },
+        0.5
+    );
     return tl_move;
 };
 
 // główna linia czasu
 const master = new TimelineMax();
-master.add(bars());
+master.add("start");
+master.add(bars(), "start");
+master.add(move(document.querySelectorAll("#leg-right, #leg-left")), "start");
